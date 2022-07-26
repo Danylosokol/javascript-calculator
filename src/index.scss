@@ -20,7 +20,7 @@ a {
   text-decoration: none;
 }
 
-#root {
+#root{
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -28,7 +28,7 @@ a {
   align-items: center;
 }
 
-#calculator {
+#calculator{
   width: 30rem;
   height: 40rem;
   background-color: black;
@@ -36,47 +36,45 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 2px solid black;
-  grid-gap: 0.25rem;
+  grid-gap: .25rem;
 }
 
-#calculator div {
+#calculator div{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.7rem;
+  border-radius: .7rem;
 }
 
-#display {
+#display{
   grid-column-start: 1;
   grid-column-end: 5;
   background-color: #fff;
   color: #1f1e1e;
 }
 
-#clear {
+#clear{
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: red;
 }
 
-#equals {
+#equals{
   grid-column-start: 4;
   grid-row-start: 5;
   grid-row-end: 7;
   background-color: blue;
 }
 
-#zero {
+#zero{
   grid-column-start: 1;
   grid-column-end: 3;
 }
 
-.operator {
+.operator{
   background-color: lightslategray;
 }
 
-.number {
+.number{
   background-color: gray;
 }
-
-/*# sourceMappingURL=index.css.map */

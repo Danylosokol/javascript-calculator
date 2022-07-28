@@ -12,6 +12,7 @@ class App extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleCalculation = this.handleCalculation.bind(this);
   }
 
   handleClick(event) {
@@ -21,8 +22,14 @@ class App extends React.Component {
       case "AC":
         this.handleClear();
         break;
+      case "=":
+        this.handleCalculation();
+        break;
       case "x":
-        formulaInput = "⋅";
+        formulaInput = '\xB7';
+        break;
+      case ".":
+        formulaInput = this.state.input[this.state.input.length - 1] === "." ? "" : ".";
         break;
       default:
         formulaInput = event.target.innerHTML;
@@ -32,7 +39,7 @@ class App extends React.Component {
     if(formulaInput){
       this.setState((state) => (
        {
-        input: (parseInt(input) && state.input !== "0") || input === "." ? state.input + input : input,
+        input: (parseInt(input) && state.input !== "0" && state.input !== "/" && state.input !== "x" && state.input !== "-" && state.input !== "+") || input === "." ? state.input + input : input,
         formula: state.formula + formulaInput,
       }));
     }
@@ -42,6 +49,17 @@ class App extends React.Component {
     this.setState({
       input: "0",
       formula: ""
+    })
+  }
+
+  handleCalculation(){
+    let formulaStr = this.state.formula;
+    let formulaArr = formulaStr.split(/(-|\+|\xB7|\/)/);
+    formulaArr = formulaArr.map((elmnt) => (elmnt === '\xB7' ? "*" : elmnt));
+    const result = eval(formulaArr.join(" "));
+    console.log(result);
+    this.setState({
+      input: result,
     })
   }
 

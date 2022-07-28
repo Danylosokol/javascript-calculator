@@ -16,3 +16,6 @@ class Display extends React.Component {
 }
 
 export default Display;
+
+// 3 + 5 * 6 - 2 / 4
+// 32.5 or 11.5
